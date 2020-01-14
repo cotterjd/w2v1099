@@ -4,9 +4,12 @@
     <label>Salary 
       <input v-model="salary" type="text" />
     </label><br>
+    <label>401K contribution 
+      <input v-model="for01k" placeholder="%" type="text" />
+    </label><br>
     <div> 
       <span>Combined Income: {{w2CombinedIncome}}</span><br>
-      <span>Deductions: {{standardDeduction}}</span><br>
+      <span>Deductions: {{totalDeductions}}</span><br>
       <span>Taxable Income: {{w2TaxableIncome}}</span><br>
       <span>Payroll Taxes: {{w2PayrollTaxes}}</span><br>
       <span>Income Taxes: {{w2IncomeTaxes}}</span><br>
@@ -27,6 +30,7 @@ export default {
   data() {
     return {
       salary: 0,
+      for01k: 0,
       standardDeduction: 24400,
     }
   },
@@ -53,8 +57,15 @@ export default {
     w2PayrollTaxes () {
       return (Number(this.salary) + this.spouseIncome) * 0.0765 
     },
+    totalDeductions () {
+      const f01k = Number(this.for01k)
+      const f01kPerc = f01k/100
+      const f01kCont = f01kPerc * Number(this.salary)
+      log(f01kCont + this.standardDeduction)
+      return f01kCont + this.standardDeduction
+    },
     w2TaxableIncome () {
-      const taxableIncome = this.w2CombinedIncome - this.standardDeduction
+      const taxableIncome = this.w2CombinedIncome - this.totalDeductions
       return taxableIncome < 0 ? 0 : taxableIncome 
     },
     w2IncomeTaxesOwed () {

@@ -5,7 +5,7 @@
      <label>Salary 
        <input v-model="salary" type="text" />
      </label><br>
-     <label>Deductions 
+     <label>Business Deductions 
        <input v-model="deductions" type="text" />
      </label><br>
    </div>
