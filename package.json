@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run serve"
+    "start": "npm run serve",
+    "push": "git branch | grep \\* | cut -d ' ' -f2 | git push origin"
   },
   "dependencies": {
     "core-js": "^3.4.4",
