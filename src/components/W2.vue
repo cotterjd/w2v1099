@@ -7,6 +7,9 @@
     <label>401K contribution 
       <input v-model="for01k" placeholder="%" type="text" />
     </label><br>
+    <label>HSA contribution 
+      <input v-model="hsa" placeholder="" type="text" />
+    </label><br>
     <div> 
       <span>Combined Income: {{w2CombinedIncome}}</span><br>
       <span>Deductions: {{totalDeductions}}</span><br>
@@ -32,6 +35,7 @@ export default {
       salary: 0,
       for01k: 0,
       standardDeduction: 24400,
+      hsa: 0,
     }
   },
   props: {
@@ -61,8 +65,8 @@ export default {
       const f01k = Number(this.for01k)
       const f01kPerc = f01k/100
       const f01kCont = f01kPerc * Number(this.salary)
-      log(f01kCont + this.standardDeduction)
-      return f01kCont + this.standardDeduction
+      const hsa = Number(this.hsa)
+      return f01kCont + hsa + this.standardDeduction
     },
     w2TaxableIncome () {
       const taxableIncome = this.w2CombinedIncome - this.totalDeductions
