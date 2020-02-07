@@ -39,6 +39,7 @@ export default {
       deductions: 0,
       revenue: 0,
       standardDeduction: 24400,
+      CORP_TAX_RATE: 0.21
     }
   },
   props: {
@@ -62,7 +63,8 @@ export default {
       return getIncomeTaxes(this.taxableIncome)
     },
     corpTaxes () {
-      return 0 
+      const taxableIncome = this.revenue - this.salary * (1.153 / 2) - (this.revenue * 0.2) - this.deductions 
+      return taxableIncome * this.CORP_TAX_RATE 
     },
     credits () {
       return this.numChildren * 2000
