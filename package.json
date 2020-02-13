@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "start": "npm run serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run serve",
     "push": "git branch | grep \\* | cut -d ' ' -f2 | git push origin"
   },
   "dependencies": {

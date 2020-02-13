@@ -10,6 +10,7 @@
       <w2-taxes :numChildren="numberOfChildren" :spouseIncome="spouseIncome" />
       <ten99-taxes :numChildren="numberOfChildren" :spouseIncome="spouseIncome" />
       <corp-taxes :numChildren="numberOfChildren" :spouseIncome="spouseIncome" />
+      <side-biz :numChildren="numberOfChildren" :spouseIncome="spouseIncome" />
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@
 import w2Taxes from './W2.vue'
 import ten99Taxes from './Ten99.vue'
 import corpTaxes from './Corp.vue'
+import sideBiz from './SideBiz.vue'
 const { log } = console
 
 
@@ -28,6 +30,7 @@ export default {
     w2Taxes,
     ten99Taxes,
     corpTaxes,
+    sideBiz,
   },
   data() {
     return {
