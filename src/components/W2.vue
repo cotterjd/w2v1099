@@ -59,7 +59,11 @@ export default {
       return this.numChildren * 2000
     },
     w2PayrollTaxes () {
-      return (Number(this.salary) + this.spouseIncome) * 0.0765 
+      const payrollCap = 118500
+      const getPayrollEligibleIncome = income => income > payrollCap ? payrollCap : income 
+      const spousePayrollEligableIncome = getPayrollEligibleIncome(this.spouseIncome)
+      const payrollEligibleIncome = getPayrollEligibleIncome(Number(this.salary)) + spousePayrollEligableIncome
+      return payrollEligibleIncome * 0.0765 
     },
     totalDeductions () {
       const f01k = Number(this.for01k)
