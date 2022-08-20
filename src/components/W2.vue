@@ -20,6 +20,7 @@
       <span>Income Tax Owed: {{w2IncomeTaxesOwed}}</span><br>
       <span>Effective Tax Rate: {{w2EffectiveTaxRate}}</span><br>
       <font color="red">Total Taxes: {{w2TotalTaxes}}</font><br>
+      <span>Net Income After Taxes: {{netIncomeAfterTaxes}}</span><br>
     </div>
   </div>
 </template>
@@ -85,6 +86,9 @@ export default {
     },
     w2TotalTaxes () {
       return this.w2IncomeTaxesOwed + this.w2PayrollTaxes 
+    },
+    netIncomeAfterTaxes () {
+      return this.w2CombinedIncome - this.w2TotalTaxes 
     },
   },
   methods: {}

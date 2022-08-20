@@ -23,6 +23,7 @@
       <span>Income Tax Owed: {{incomeTaxesOwed}}</span><br>
       <span>Effective Tax Rate: {{effectiveTaxRate}}</span><br>
       <font color="red">Total Taxes: {{totalTaxes}}</font><br>
+      <span>Net Income After Taxes: {{netIncomeAfterTaxes}}</span><br>
     </div>
   </div>
 </template>
@@ -88,6 +89,9 @@ export default {
     },
     totalTaxes () {
       return this.incomeTaxesOwed + this.payrollTaxes 
+    },
+    netIncomeAfterTaxes () {
+      return this.combinedIncome - this.totalTaxes 
     },
   },
   methods: {}
