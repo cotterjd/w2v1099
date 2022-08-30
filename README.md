@@ -25,5 +25,10 @@ npm run test
 npm run lint
 ```
 
+### Deploy
+```
+yarn deploy # then add taxes.cotterslist.com CNAME in gh-pages branch on Github
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
