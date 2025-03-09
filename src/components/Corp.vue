@@ -64,7 +64,7 @@ export default {
       return getIncomeTaxes(this.taxableIncome)
     },
     corpTaxes () {
-      const taxableIncome = this.revenue - this.salary * (1.153 / 2) - (this.revenue * 0.2) - this.deductions 
+      const taxableIncome = this.revenue - this.salary * (1.153 / 2) - this.deductions 
       return taxableIncome * this.CORP_TAX_RATE 
     },
     credits () {
@@ -77,7 +77,7 @@ export default {
       return Number(this.salary) * 0.153 + (this.spouseIncome * 0.0765) 
     },
     taxableIncome () {
-      const ti = Number(this.salary) + this.spouseIncome - this.totalDeductions
+      const ti = Number(this.revenue) + this.spouseIncome - this.totalDeductions
       return ti < 0 ? 0 : ti 
     },
     incomeTaxesOwed () {
@@ -132,7 +132,7 @@ function getIncomeTaxes(i) {
   const l5Rate = .32;
   const l5Taxes = (l5Amount-l4Amount)*l5Rate;
   if (income < l5Amount) {
-    return tax == (income - l4Amount) * l5Rate;
+    return tax += (income - l4Amount) * l5Rate;
   } else tax += l5Taxes
 
   const l6Amount = 510300;
@@ -142,7 +142,7 @@ function getIncomeTaxes(i) {
     return tax += (income - l5Amount) * l6Rate;
   } else tax += l6Taxes
 
-  const l7Amount = 510301;
+  // const l7Amount = 510301;
   const l7Rate = .37;
   const l7Taxes = (income-l6Amount)*l7Rate; 
   return tax += l7Taxes;
